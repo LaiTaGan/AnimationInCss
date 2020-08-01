@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    .effect{
+        animation: blink 1s infinite;
+    }
+    .color{
+        animation: makeup 1s infinite;
+    }
+
+    /*定义动画 @keyframes 定义名称*/
+    @keyframes blink{
+        0%{opacity: 0;} /* 动画开始 */
+        50%{opacity:1} /* 动画一半 */
+        100%{opacity: 0;} /* 动画结束 */
+    }
+    @keyframes makeup{
+        0%{background-color: red;}
+        25%{background-color: yellow;}
+        50%{background-color: blue;}
+        75%{background-color: green;}
+        100%{background-color: brown;}
+    }
+    #box{
+        width:100px;
+        height:100px ;
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div onclick="start()" id="box" ></div>
+    <div id="text" >Hello World</div>
+    <button onclick="start()">Start</button>
+    
+    <script>
+        var text=document.getElementById("text")
+        var box=document.getElementById("box")
+        function start(){
+            text.classList.add("effect")
+            box.classList.add("color")
+        }
+    </script>
+</body>
+</html>

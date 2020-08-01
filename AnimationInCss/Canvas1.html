@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas</title>
+    <script type="text/javascript">
+    window.onload=function (){
+        //fill 填满
+        var cvs=document.getElementById("cvs")
+        var ctx=cvs.getContext("2d")//Canvas context Object
+        ctx.fillStyle="red";
+        ctx.globalAlpha=0.5;//透明
+        ctx.fillRect(50,50,100,100);//draw box in location
+        //Stroke 描边
+        ctx.globalAlpha=1;
+        ctx.strokeStyle="blue";
+        ctx.strokeRect(200,200,50,50);
+        //path路径(draw a line from a point to a point)
+        ctx.beginPath();
+        ctx.moveTo(200,100);//移动当前的位置
+        ctx.lineTo(300,300)
+        ctx.closePath();
+        ctx.stroke();//or call ctx.fill();
+        //利用路径画多边形
+        ctx.beginPath();
+        ctx.moveTo(300,300)
+        ctx.lineTo(400,350)
+        ctx.lineTo(250,400)
+        ctx.closePath();
+        ctx.fill()
+    }
+    </script>
+</head>
+<body>
+    <canvas id="cvs" width="800" height="600" style="border:1px solid black"></canvas>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 50px;height: 50px;
+            background-color: red;
+            position: fixed;
+            top: 0px; right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box" onclick="show()"></div>
+
+    <script>
+        var box=document.getElementById("box")
+    function show(){
+        var styles=window.getComputedStyle(box)
+        var sizeInX=styles.getPropertyValue("width")
+        sizeInX=parseInt(sizeInX)
+        var sizeInY=styles.getPropertyValue("height")
+        sizeInY=parseInt(sizeInY)
+        var animeId=window.setInterval(function(){
+            if(sizeInX>=350){
+                window.clearInterval(animeId)
+                return
+            }
+            sizeInX++
+            box.style.width=sizeInX+"px"
+            sizeInY++
+            box.style.height=sizeInY+"px"
+        },2)
+    }
+    </script>
+</body>
+</html>

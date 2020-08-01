@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var cvs,ctx;
+        window.onload=function(){
+             cvs=document.getElementById("cvs")
+             ctx=cvs.getContext("2d")
+             var img = new Image()
+             img.src="landscape.jpg"
+             img.onload=function(){
+             ctx.drawImage(this,0,0,cvs.width,cvs.height)
+            }
+        }
+
+        function invertColor(){
+            var pixels=ctx.getImageData(0,0,cvs.width,cvs.height)//Image data object
+            var data=pixels.data;//一个像素占据4个（bytes）red,green,blue,alpha(0-255)
+            for(var i=0;i<data.length;i+=4){
+                data[i]=255-data[i]//red
+                data[i+1]=255-data[i+1]//green
+                data[i+2]=255-data[i+2]//blye
+            }
+            ctx.putImageData(pixels,0,0)
+        }
+    </script>
+</head>
+<body>
+    <div><button onclick="invertColor()">invert_Color</button></div>
+    <canvas id="cvs" width="800" height="600" style="border:1px solid black"></canvas>
+</body>
+</html>
